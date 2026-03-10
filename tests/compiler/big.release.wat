@@ -5861,7 +5861,7 @@
        local.get $0
        call $~lib/string/String.__concat
        i32.const 12768
-       i32.const 794
+       i32.const 803
        i32.const 9
        call $~lib/builtins/abort
        unreachable
@@ -9861,7 +9861,7 @@
    local.get $0
    call $~lib/string/String.__concat
    i32.const 12768
-   i32.const 666
+   i32.const 675
    i32.const 7
    call $~lib/builtins/abort
    unreachable
@@ -10292,7 +10292,7 @@
   global.get $~lib/memory/__stack_pointer
   local.get $1
   call $~lib/big/Big.copyOf
-  local.tee $2
+  local.tee $1
   i32.store offset=4
   global.get $~lib/memory/__stack_pointer
   local.get $0
@@ -10306,10 +10306,10 @@
   local.tee $10
   i32.store offset=12
   global.get $~lib/memory/__stack_pointer
-  local.get $2
+  local.get $1
   i32.store
   global.get $~lib/memory/__stack_pointer
-  local.get $2
+  local.get $1
   i32.load offset=8
   local.tee $9
   i32.store offset=16
@@ -10318,14 +10318,14 @@
   i32.store
   local.get $0
   i32.load8_u
-  local.set $1
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $2
+  local.get $1
   i32.store
   i32.const 1
   i32.const -1
-  local.get $1
   local.get $2
+  local.get $1
   i32.load8_u
   i32.eq
   select
@@ -10357,13 +10357,13 @@
    i32.eqz
    if
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.store
-    local.get $2
+    local.get $1
     local.get $3
     i32.store8
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.store
     i32.const 1
     call $~lib/array/Array<u8>#constructor
@@ -10371,17 +10371,17 @@
     global.get $~lib/memory/__stack_pointer
     local.get $0
     i32.store offset=20
-    local.get $2
+    local.get $1
     local.get $0
     i32.store offset=8
-    local.get $2
+    local.get $1
     local.get $0
     call $~lib/rt/itcms/__link
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.store offset=20
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.load offset=8
     local.tee $0
     i32.store
@@ -10390,10 +10390,9 @@
     i32.const 0
     call $~lib/array/Array<u8>#__set
     global.get $~lib/memory/__stack_pointer
-    local.get $2
-    local.tee $1
+    local.get $1
     i32.store
-    local.get $2
+    local.get $1
     i32.const 0
     i32.store offset=4
     br $folding-inner0
@@ -10435,9 +10434,9 @@
    i32.store
    local.get $8
    call $~lib/array/Array<u8>#get:length
-   local.set $1
+   local.set $2
    global.get $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $1
    i32.store offset=32
    global.get $~lib/memory/__stack_pointer
    i32.const 0
@@ -10445,7 +10444,7 @@
    local.tee $11
    i32.store offset=36
    global.get $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $1
    i32.store
    global.get $~lib/memory/__stack_pointer
    local.get $0
@@ -10454,31 +10453,31 @@
    i32.load offset=4
    local.set $7
    global.get $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $1
    i32.store offset=20
-   local.get $2
+   local.get $1
    local.get $7
-   local.get $2
+   local.get $1
    i32.load offset=4
    i32.sub
    local.tee $7
    i32.store offset=4
    global.get $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $1
    i32.store
-   local.get $2
+   local.get $1
    local.get $3
    i32.store8
    global.get $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $1
    i32.store
    global.get $~lib/memory/__stack_pointer
    local.get $11
    i32.store offset=20
-   local.get $2
+   local.get $1
    local.get $11
    i32.store offset=8
-   local.get $2
+   local.get $1
    local.get $11
    call $~lib/rt/itcms/__link
    local.get $5
@@ -10500,11 +10499,11 @@
    i32.const 0
    call $~lib/array/Array<u8>#unshift
    loop $for-loop|0
-    local.get $1
+    local.get $2
     local.tee $3
     i32.const 1
     i32.add
-    local.set $1
+    local.set $2
     local.get $3
     local.get $13
     i32.lt_s
@@ -10532,12 +10531,12 @@
        local.get $13
        local.get $8
        call $~lib/array/Array<u8>#get:length
-       local.tee $1
+       local.tee $2
        i32.ne
        if
         i32.const 1
         i32.const -1
-        local.get $1
+        local.get $2
         local.get $13
         i32.lt_s
         select
@@ -10605,7 +10604,7 @@
        global.get $~lib/memory/__stack_pointer
        local.get $9
        local.get $15
-       local.get $1
+       local.get $2
        local.get $13
        i32.eq
        select
@@ -10616,30 +10615,30 @@
        i32.store
        local.get $8
        call $~lib/array/Array<u8>#get:length
-       local.set $1
+       local.set $2
        loop $for-loop|10
-        local.get $1
+        local.get $2
         if
          global.get $~lib/memory/__stack_pointer
          local.get $8
          i32.store
          local.get $8
-         local.get $1
+         local.get $2
          i32.const 1
          i32.sub
-         local.tee $1
+         local.tee $2
          call $~lib/array/Array<u8>#__uget
          local.set $3
          global.get $~lib/memory/__stack_pointer
          local.get $17
          i32.store
          local.get $17
-         local.get $1
+         local.get $2
          call $~lib/array/Array<u8>#__uget
          local.get $3
          i32.gt_u
          if
-          local.get $1
+          local.get $2
           local.set $3
           loop $for-loop|11
            local.get $3
@@ -10689,9 +10688,9 @@
           local.get $8
           i32.store offset=20
           local.get $8
-          local.get $1
+          local.get $2
           local.get $8
-          local.get $1
+          local.get $2
           call $~lib/array/Array<u8>#__uget
           i32.const 10
           i32.add
@@ -10704,17 +10703,17 @@
          local.get $8
          i32.store offset=20
          local.get $8
-         local.get $1
+         local.get $2
          call $~lib/array/Array<u8>#__uget
          local.set $3
          global.get $~lib/memory/__stack_pointer
          local.get $17
          i32.store offset=20
          local.get $8
-         local.get $1
+         local.get $2
          local.get $3
          local.get $17
-         local.get $1
+         local.get $2
          call $~lib/array/Array<u8>#__uget
          i32.sub
          call $~lib/array/Array<u8>#__set
@@ -10777,7 +10776,7 @@
      local.get $8
      i32.store
      local.get $8
-     local.get $1
+     local.get $2
      local.get $4
      local.get $16
      i32.lt_s
@@ -10869,13 +10868,13 @@
     local.get $11
     call $~lib/array/Array<u8>#shift
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.store
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.store offset=20
-    local.get $2
-    local.get $2
+    local.get $1
+    local.get $1
     i32.load offset=4
     i32.const 1
     i32.sub
@@ -10893,18 +10892,30 @@
     local.get $0
     i32.store
     global.get $~lib/memory/__stack_pointer
-    local.get $2
+    local.get $1
     i32.store offset=20
     global.get $~lib/memory/__stack_pointer
     local.get $8
     i32.store offset=44
-    local.get $2
+    local.get $1
     local.get $7
     global.get $~lib/big/Big.RM
     local.get $8
     call $~lib/array/Array<u8>#get:length
     i32.const 0
-    i32.ge_s
+    i32.gt_s
+    if (result i32)
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store offset=44
+     local.get $8
+     i32.const 0
+     call $~lib/array/Array<u8>#__uget
+     i32.const 0
+     i32.ne
+    else
+     i32.const 0
+    end
     call $~lib/big/Big#__round
     local.set $1
     br $folding-inner0
@@ -10913,7 +10924,7 @@
    i32.const 48
    i32.add
    global.set $~lib/memory/__stack_pointer
-   local.get $2
+   local.get $1
    return
   end
   global.get $~lib/memory/__stack_pointer
@@ -12648,7 +12659,7 @@
     local.get $2
     call $~lib/string/String.__concat
     i32.const 12768
-    i32.const 630
+    i32.const 639
     i32.const 7
     call $~lib/builtins/abort
     unreachable
@@ -13235,7 +13246,7 @@
     if
      i32.const 14528
      i32.const 12768
-     i32.const 530
+     i32.const 536
      i32.const 30
      call $~lib/builtins/abort
      unreachable

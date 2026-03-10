@@ -7046,7 +7046,7 @@
       local.get $8
       call $~lib/string/String.__concat
       i32.const 11744
-      i32.const 794
+      i32.const 803
       i32.const 9
       call $~lib/builtins/abort
       unreachable
@@ -9149,7 +9149,7 @@
   if
    i32.const 11888
    i32.const 11744
-   i32.const 643
+   i32.const 652
    i32.const 7
    call $~lib/builtins/abort
    unreachable
@@ -12544,7 +12544,7 @@
    local.get $10
    call $~lib/string/String.__concat
    i32.const 11744
-   i32.const 666
+   i32.const 675
    i32.const 7
    call $~lib/builtins/abort
    unreachable
@@ -13807,7 +13807,21 @@
    local.get $28
    call $~lib/array/Array<u8>#get:length
    i32.const 0
-   i32.ge_s
+   i32.gt_s
+   if (result i32)
+    local.get $r
+    local.set $28
+    global.get $~lib/memory/__stack_pointer
+    local.get $28
+    i32.store offset=44
+    local.get $28
+    i32.const 0
+    call $~lib/array/Array<u8>#__uget
+    i32.eqz
+    i32.eqz
+   else
+    i32.const 0
+   end
    call $~lib/big/Big#__round
    local.set $28
    global.get $~lib/memory/__stack_pointer
@@ -14035,7 +14049,7 @@
    local.get $3
    call $~lib/string/String.__concat
    i32.const 11744
-   i32.const 606
+   i32.const 615
    i32.const 7
    call $~lib/builtins/abort
    unreachable
@@ -15280,7 +15294,7 @@
    local.get $3
    call $~lib/string/String.__concat
    i32.const 11744
-   i32.const 630
+   i32.const 639
    i32.const 7
    call $~lib/builtins/abort
    unreachable
@@ -15636,7 +15650,7 @@
   if
    i32.const 13504
    i32.const 11744
-   i32.const 530
+   i32.const 536
    i32.const 30
    call $~lib/builtins/abort
    unreachable

@@ -507,6 +507,9 @@ export class Big {
         r = new Array<u8>(1);
         unchecked(r[0] = al > ai ? a[ai] : 0);
       }
+      // Note: r.length >= 0 is always true (array length is never negative).
+      // The condition is preserved from the original Big.js algorithm to ensure
+      // the loop runs exactly `m` iterations to produce sufficient precision.
     } while ((ai++ < al || r.length >= 0) && m-- > 0);
 
     if (unchecked(!qc[0]) && qi != 1) {
@@ -515,7 +518,10 @@ export class Big {
       p--;
     }
 
-    if (qi > p) return this.__round(q, p, Big.RM, r.length >= 0);
+    // r.length >= 0 is always true; this argument signals that a remainder
+    // exists (any non-empty r array counts), so rounding should take it into
+    // account when using half-up or half-even modes.
+    if (qi > p) return this.__round(q, p, Big.RM, r.length > 0 && unchecked(!!r[0]));
     return q;
   }
 
@@ -586,14 +592,17 @@ export class Big {
     if (x.s < 0) throw new Error('No square root for negative numbers: ' + this.toString());
 
     let r = x, t = r;
-    e = r.e + (Big.DP += 4);
+    const savedDP = Big.DP;
+    Big.DP += 4;
+    e = r.e + Big.DP;
 
     do {
       t = r;
       r = t.plus(x.div(t)).times(Big.HALF).round(Big.DP);
     } while (t.c.slice(0, e).join('') != r.c.slice(0, e).join(''));
 
-    return this.__round(Big.copyOf(r), (Big.DP -= 4) + r.e + 1);
+    Big.DP = savedDP;
+    return this.__round(Big.copyOf(r), Big.DP + r.e + 1);
   }
 
   /**
