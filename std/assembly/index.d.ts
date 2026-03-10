@@ -2683,6 +2683,92 @@ declare namespace operator {
   ) => TypedPropertyDescriptor<any> | void;
 }
 
+/** Arbitrary-precision decimal arithmetic. Available as `import Big from "as-big"`. */
+declare class Big {
+  /** Sign: 1 (positive) or -1 (negative). */
+  s: i8;
+  /** Base-10 exponent. */
+  e: i32;
+  /** Coefficient digits, most significant first. */
+  c: u8[];
+  /** Big with value zero. */
+  static readonly ZERO: Big;
+  /** Big with value one. */
+  static readonly ONE: Big;
+  /** Big with value two. */
+  static readonly TWO: Big;
+  /** Big with value ten. */
+  static readonly TEN: Big;
+  /** Big with value 0.5. */
+  static readonly HALF: Big;
+  /** Positive exponent threshold for exponential notation (default: 21). */
+  static PE: i32;
+  /** Negative exponent threshold for exponential notation (default: -7). */
+  static NE: i32;
+  /** Maximum decimal places for division results (default: 20). */
+  static DP: i32;
+  /** Maximum value of DP. */
+  static readonly MAX_DP: i32;
+  /** Maximum magnitude of the exponent for pow (default: 1_000_000). */
+  static readonly MAX_POWER: i32;
+  /** Default rounding mode: 0=down, 1=half-up (default), 2=half-even, 3=up. */
+  static RM: u8;
+  static readonly ROUND_DOWN: u8;
+  static readonly ROUND_HALF_UP: u8;
+  static readonly ROUND_HALF_EVEN: u8;
+  static readonly ROUND_UP: u8;
+  constructor(s: i8, e: i32, c: u8[]);
+  /** Creates a Big from a Big, string, or numeric primitive. */
+  static of<T>(n: T): Big;
+  /** Returns a deep copy of x. */
+  static copyOf(x: Big): Big;
+  static zero(): Big;
+  static one(): Big;
+  static two(): Big;
+  static ten(): Big;
+  static half(): Big;
+  /** Returns the negated value. */
+  neg(): Big;
+  /** Returns this. */
+  pos(): Big;
+  /** Compares: 1 if this > y, -1 if this < y, 0 if equal. */
+  cmp<T>(y: T): i8;
+  eq<T>(y: T): boolean;
+  neq<T>(y: T): boolean;
+  gt<T>(y: T): boolean;
+  gte<T>(y: T): boolean;
+  lt<T>(y: T): boolean;
+  lte<T>(y: T): boolean;
+  /** Returns this + y. */
+  plus<T>(y: T): Big;
+  /** Returns this - y. */
+  minus<T>(y: T): Big;
+  /** Returns this * y. */
+  times<T>(y: T): Big;
+  /** Returns this / y, rounded to Big.DP decimal places. */
+  div<T>(y: T): Big;
+  /** Returns this % y. */
+  mod<T>(y: T): Big;
+  /** Returns this raised to integer power n. */
+  pow(n: i32): Big;
+  /** Returns the absolute value. */
+  abs(): Big;
+  /** Returns the square root. */
+  sqrt(): Big;
+  /** Returns this rounded to sd significant digits. */
+  prec(sd: i32, rm?: u8): Big;
+  /** Returns this rounded to dp decimal places. */
+  round(dp?: i32, rm?: u8): Big;
+  /** Returns the value as a 64-bit float. */
+  toF64(): f64;
+  /** Returns the value as a 64-bit float (alias for toF64). */
+  toNumber(): f64;
+  /** Returns the decimal string representation. */
+  toString(radix?: i32): string;
+  /** Returns exponential notation. */
+  toExponential(dp?: i32, rm?: u8): string;
+}
+
 /** Annotates an element as a program global. */
 declare function global(...args: any[]): any;
 
